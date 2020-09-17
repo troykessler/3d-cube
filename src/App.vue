@@ -80,6 +80,7 @@ loader.load(
     console.log(scrambleString);
 
     scene.add(gltf.scene);
+    console.log(gltf.scene);
     const cubeModel = gltf.scene.children[2];
 
     const tileOrder = [
@@ -140,28 +141,58 @@ loader.load(
     ];
 
     tileOrder.forEach((tile, index) => {
-      const mesh = cubeModel.children.find(
+      const meshIndex = cubeModel.children.findIndex(
         (mesh) => mesh.material.name === tile
       );
 
       switch (scrambleString[index]) {
         case "U":
-          console.log("U", mesh.material.color);
+          gltf.scene.children[2].children[meshIndex].material.color = {
+            r: 0.8,
+            g: 0.8,
+            b: 0.8,
+            isColor: true,
+          };
           break;
         case "R":
-          console.log("R", mesh.material.name);
+          gltf.scene.children[2].children[meshIndex].material.color = {
+            r: 0.8,
+            g: 0,
+            b: 0,
+            isColor: true,
+          };
           break;
         case "F":
-          console.log("F", mesh.material.name);
+          gltf.scene.children[2].children[meshIndex].material.color = {
+            r: 0,
+            g: 0.8,
+            b: 0,
+            isColor: true,
+          };
           break;
         case "D":
-          console.log("D", mesh.material.name);
+          gltf.scene.children[2].children[meshIndex].material.color = {
+            r: 0.8,
+            g: 0.8,
+            b: 0,
+            isColor: true,
+          };
           break;
         case "L":
-          console.log("L", mesh.material.name);
+          gltf.scene.children[2].children[meshIndex].material.color = {
+            r: 0.8,
+            g: 0.3,
+            b: 0.1,
+            isColor: true,
+          };
           break;
         case "B":
-          console.log("B", mesh.material.name);
+          gltf.scene.children[2].children[meshIndex].material.color = {
+            r: 0,
+            g: 0,
+            b: 0.8,
+            isColor: true,
+          };
           break;
       }
     });
